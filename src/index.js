@@ -6,8 +6,10 @@ import Header from '../components/Header';
 import Homepage from '../components/Homepage';
 import Aboutpage from '../components/Aboutpage';
 import Loginpage from '../components/Loginpage';
+import Notfoundpage from '../components/Notfoundpage';
 import Cars from '../components/cars/cars';
 import CarDetails from '../components/cars/CarDetails';
+
 import './styles.css';
 const data = [
             {
@@ -68,6 +70,7 @@ class App extends React.Component {
 					<Route path='/cars' component={Cars} data={data}/>
 					<Route path='/cars/:name' component={CarDetails} data={data}/>
 					<Route path='/login' component={Loginpage}/>
+					<Route path='*' component={Notfoundpage}/>
 				</Route>				
 			</Router>
 		)
