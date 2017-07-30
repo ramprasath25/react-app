@@ -15,9 +15,9 @@ class Notfoundpage extends React.Component {
 		                    Sorry, an error has occured, Requested page not found!
 		                </p>
 		                <div className="error-actions">
-		                   <Link to="/"> <a className="btn btn-primary btn-lg">
+		                   <Link to="/"> <span className="btn btn-primary btn-lg">
 		                   	<span className="glyphicon glyphicon-home"></span>
-		                       Take Me Home </a></Link>
+		                       Take Me Home </span></Link>
 		                </div>
 		            </div>
 		        </div>

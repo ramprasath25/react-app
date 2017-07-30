@@ -12,15 +12,21 @@ class Loginpage extends Component {
 			                <img className="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
 			                    alt=""/>
 			                <form className="form-signin">
-			                <input type="text" className="form-control" placeholder="Email" required autofocus/>
+			                <input type="text" className="form-control" placeholder="Email" required autoFocus/>
 			                <input type="password" className="form-control" placeholder="Password" required/>
 			                <button className="btn btn-lg btn-primary btn-block" type="submit">
 			                    Sign in</button>
-			                <label className="checkbox pull-left">
-			                    <input type="checkbox" value="remember-me"/>
-			                    Remember me
-			                </label>
-			                <a className="pull-right need-help">Need help? </a><span className="clearfix"></span>
+			                <div className="row">
+			                	<div className="col-md-6">
+			                		<label className="rememberme">
+			                    	<input type="checkbox" value="remember-me" />
+			                    	Remember me
+			                		</label>
+		                		</div>
+		                		<div className="col-md-6">
+			                		<span className="pull-right need-help">Need help? </span><span className="clearfix"></span>
+		                		</div>
+	                		</div>
 			                </form>	                
 							<p className="text-center">OR</p>
 			                <span title="Facebook" className="fa fa-facebook"></span>

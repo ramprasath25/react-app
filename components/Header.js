@@ -16,6 +16,7 @@ class Header extends React.Component {
                                 <Navlinks to="/"  activeClassName="active" onlyActiveOnIndex>Home</Navlinks>
                                 <Navlinks to="/about" activeClassName="active">About</Navlinks>
                                 <Navlinks to="/cars" activeClassName="active">Cars</Navlinks>
+                                <Navlinks to="/books" activeClassName="active">Books</Navlinks>
                             </ul>
                             <ul className="nav navbar-nav navbar-right">
 						      <Navlinks to="/login"><span className="glyphicon glyphicon-user"></span> Sign In</Navlinks>

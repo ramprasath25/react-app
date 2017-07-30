@@ -1,16 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
+import {Provider} from 'react-redux';
 //Components
 import Header from '../components/Header';
 import Homepage from '../components/Homepage';
 import Aboutpage from '../components/Aboutpage';
 import Loginpage from '../components/Loginpage';
 import Notfoundpage from '../components/Notfoundpage';
+import Bookpage from '../components/books/Bookpage';
 import Cars from '../components/cars/cars';
 import CarDetails from '../components/cars/CarDetails';
 
 import './styles.css';
+import configureStore from './store.js';
+// Intializing store..
+const store = configureStore();
+
 const data = [
             {
                 id: 1,
@@ -69,6 +75,7 @@ class App extends React.Component {
 					<Route path='/about' component={Aboutpage} />
 					<Route path='/cars' component={Cars} data={data}/>
 					<Route path='/cars/:name' component={CarDetails} data={data}/>
+                    <Route path='/books' component={Bookpage} books={data}/>
 					<Route path='/login' component={Loginpage}/>
 					<Route path='*' component={Notfoundpage}/>
 				</Route>				
@@ -77,4 +84,4 @@ class App extends React.Component {
 	}
 }
 // Rendering Element
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('app'));
