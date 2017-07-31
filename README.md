@@ -1,4 +1,5 @@
 # Web application using React Redux webpack
+-------------------------------------------
 This is a simple web application built using 
 - [React, ReactDOM & React-router] 
 - [Redux]
@@ -10,6 +11,7 @@ This is a simple web application built using
 It is adapted from various tutorials.
 
 ## Getting Started
+-------------------
 Requirement:
 
 - NodeJS 6+
@@ -22,6 +24,7 @@ yarn install
 ```
 
 ## Running the application
+--------------------------
 
 ```
 yarn start
@@ -30,8 +33,11 @@ yarn start
 Visit [http://localhost:8080/](http://localhost:8080/).
 
 > **Note:**
-
 > - To change the port change <i class="icon-file"></i> **package.json** file
 
 > **Tip:** **npm** can also be used instead of yarn.  **package.json** file has to be modified to npm
+
+## License
+----------
+MIT@Ramprasath R
 
