@@ -14,9 +14,8 @@ class Header extends React.Component {
                         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul className="nav navbar-nav">
                                 <Navlinks to="/"  activeClassName="active" onlyActiveOnIndex>Home</Navlinks>
-                                <Navlinks to="/about" activeClassName="active">About</Navlinks>
-                                <Navlinks to="/cars" activeClassName="active">Cars</Navlinks>
-                                <Navlinks to="/books" activeClassName="active">Books</Navlinks>
+                                <Navlinks to="/about" activeClassName="active">About</Navlinks>                                
+                                <Navlinks to="/users" activeClassName="active">Users</Navlinks>
                             </ul>
                             <ul className="nav navbar-nav navbar-right">
 						      <Navlinks to="/login"><span className="glyphicon glyphicon-user"></span> Sign In</Navlinks>

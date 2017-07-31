@@ -1,6 +1,13 @@
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
+import { logger } from 'redux-logger';
+import thunk from 'redux-thunk';
+import axios from 'axios';
+
+//Importing Combined Reducers
 import reducers from '../reducers/index';
 
-export default function configureStore(intialState) {
-	return createStore(reducers, intialState)
-}
+//Configuring Middleware
+const middleware = applyMiddleware(logger, thunk);
+
+//Exporting Store
+export default createStore(reducers, middleware);
