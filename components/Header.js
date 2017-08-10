@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import Navlinks from './Navlinks';
-
+import { login, logout, isLoggedIn } from './Auth';
 class Header extends React.Component {
 	render() {
 		return(

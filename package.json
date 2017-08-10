@@ -11,6 +11,7 @@
   "author": "Ram",
   "license": "MIT",
   "dependencies": {
+    "auth0-js": "^8.8.0",
     "axios": "^0.16.2",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
@@ -23,6 +24,7 @@
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "react-router": "3.0.2",
+    "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",

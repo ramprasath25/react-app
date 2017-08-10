@@ -66,3 +66,23 @@ export function loadJedis() {
 		return dispatch(fetchJedis())
 	}
 }
+
+export const JEDI_REQUEST = 'JEDI_REQUEST'
+export const JEDI_SUCCESS = 'JEDI_SUCCESS'
+export const JEDI_FAILURE = 'JEDI_FAILURE'
+
+function fetchJedi(id) {
+	return {
+		[CALL_API] : {
+			types: [JEDI_REQUEST, JEDI_SUCCESS, JEDI_FAILURE],
+			endpoint: `jedis/${id}`,
+			authenticatedRequest: true
+		}
+	}
+}
+
+export function loadJedi(id) {
+	return dispatch => {
+		return dispatch(fetchJedi(id))
+	}
+}
