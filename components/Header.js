@@ -15,11 +15,15 @@ class Header extends React.Component {
                             <ul className="nav navbar-nav">
                                 <Navlinks to="/"  activeClassName="active" onlyActiveOnIndex>Home</Navlinks>
                                 <Navlinks to="/about" activeClassName="active">About</Navlinks>                                
-                                <Navlinks to="/users" activeClassName="active">Users</Navlinks>
+                                {
+                                 (isLoggedIn()) ?   <Navlinks to="/users" activeClassName="active">Users</Navlinks>: ''
+                                }
                             </ul>
                             <ul className="nav navbar-nav navbar-right">
-						      <Navlinks to="/login"><span className="glyphicon glyphicon-user"></span> Sign In</Navlinks>
-						    </ul>
+						      {
+                                 (isLoggedIn()) ? (<Navlinks to="/login" onClick={() => logout()}><span className="glyphicon glyphicon-user"></span> Logout</Navlinks>): (<Navlinks to="/login" onClick={() => login()}><span className="glyphicon glyphicon-user"></span> Sign In</Navlinks>)
+						      }
+                            </ul>
                         </div>
                     </div>
                 </nav>

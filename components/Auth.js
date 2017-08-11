@@ -4,11 +4,11 @@ import auth0 from 'auth0-js';
 const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
 
-const CLIENT_ID = 'PXeME4r1JL20IxZt6S7aFtskUZjJfvqt';
+const CLIENT_ID = '_1Lp4rn7Vpb5y7mX3SqNR3MeK7KnlbBW';
 const CLIENT_DOMAIN = 'ram1990.auth0.com';
-const REDIRECT = 'http://localhost:7000/callback';
-const SCOPE = 'YOUR_SCOPE';
-const AUDIENCE = 'AUDIENCE_ATTRIBUTE';
+const REDIRECT = 'http://localhost:8080/callback';
+const SCOPE = 'openid';
+const AUDIENCE = 'https://ram1990.auth0.com/userinfo';
 
 var auth = new auth0.WebAuth({
   clientID: CLIENT_ID,
