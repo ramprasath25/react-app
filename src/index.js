@@ -9,8 +9,6 @@ import Aboutpage from '../components/Aboutpage';
 import Loginpage from '../components/Loginpage';
 import Notfoundpage from '../components/Notfoundpage';
 import userPage from '../components/userPage';
-import Callback from '../components/callback';
-import {requireAuth} from '../components/Auth';
 
 import './styles.css';
 //Importing Store from config file
@@ -22,11 +20,10 @@ class App extends React.Component {
 			<Router history={browserHistory}>
 				<Route path='/' component={Header}>
 					<IndexRoute component={Homepage}/>
-					<Route path='/about' component={Aboutpage} onEnter={requireAuth}/>
+					<Route path='/about' component={Aboutpage} />
                     <Route path='/users' component={userPage}/>
 					<Route path='/login' component={Loginpage}/>
 					<Route path='*' component={Notfoundpage}/>
-					<Route path='/callback' component={Callback}/>
 				</Route>				
 			</Router>
 		)

@@ -1,8 +1,76 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router';
-
+import axios from 'axios';
+import querystring from 'querystring'
 class Loginpage extends Component {
-	render() {
+	constructor(props) {
+		super(props)
+		this.state = {
+			loginDetails : ''
+		}
+	}	
+	handleClick(){
+		window.IN.init({
+			api_key : '81yrfrfgcu5cku',
+			authorize: true
+		});
+		setTimeout(function(){
+			this.getUserDetails()
+		}.bind(this), 1000);
+	}
+	getUserDetails() {
+		window.IN.User.authorize(() => { 
+            window.IN.API.Profile("me")
+                .fields(["id", "firstName", "lastName", "pictureUrl", "publicProfileUrl", "email-address"])
+                .result((result) => {
+                    alert("Successfull login from linkedin : "+ result.values[0].firstName + " " + result.values[0].lastName);
+                   
+                    this.setState({
+                    	loginDetails : result.values[0]
+                    });
+                    this.getAuthorization();
+                })
+                .error(function(err) {
+                    console.log('Import error - Error occured while importing data')
+                });
+        });
+	}
+	getAuthorization() {		
+		let postUrl = 'http://localhost:8000/aunthenticate';
+		const data = this.state.loginDetails;
+		const postData = {
+			id: data.id,
+	        firstName: data.firstName,
+	        lastName: data.lastName,
+	        pictureUrl: data.pictureUrl,
+	        publicProfileUrls: data.publicProfileUrl,
+	        emailAddress: data.emailAddress
+		}
+		axios.post(postUrl, postData).then((result) => {
+			this.setState({
+				loginDetails: result.data.userInfo
+			})
+			this.setAccessToken();
+		}).catch(function(result) {
+			console.log(result);
+		});
+	}
+	setAccessToken() {
+		const userDetails = JSON.stringify(this.state.loginDetails);
+		localStorage.setItem('ACCESS_TOKEN_KEY', userDetails);
+	}
+	getAccessToken() {
+		const getAccessToken = JSON.parse(localStorage.getItem('ACCESS_TOKEN_KEY'));
+		return getAccessToken.access_token
+	}
+	logOut() {
+		window.IN.User.logout(function(data) {
+			if(data == true) {
+				localStorage.clear();	
+			}			
+		});
+	}
+	render() {		
 		return (
 			<div className="container">
 			    <div className="row">
@@ -29,10 +97,10 @@ class Loginpage extends Component {
 	                		</div>
 			                </form>	                
 							<p className="text-center">OR</p>
-			                <span title="Facebook" className="fa fa-facebook"></span>
-							<span title="Twitter" className="fa fa-twitter"></span>
-							<span title="Google" className="fa fa-google"></span>
-							<span title="Linkedin" className="fa fa-linkedin"></span>
+			                <div className="text-center">
+			                	<img src={require('../src/SignIn.png')} onClick={this.handleClick.bind(this)}/>
+			                	<button onClick={this.logOut.bind(this)}>Logout </button>
+			                </div>
 			            </div>
 			        </div>
 			    </div>

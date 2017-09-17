@@ -1,6 +1,5 @@
 import React from 'react';
 import  {getJedis} from './getJedis';
-import { isLoggedIn } from './Auth';
 class Aboutpage extends React.Component {
 	constructor () {
 		super();
@@ -17,16 +16,11 @@ class Aboutpage extends React.Component {
 		});
 		return(
 			<div>
-				{	
-					(isLoggedIn() ? 
-						<div>
-							<h1>Jedis Page!!!</h1>
-							<ul>{jedis}</ul>
-						</div> :				
-						<div className="jumbotron text-center">
-							<h2>Please login</h2>
-						</div>	
-					)						
+				{						 
+					<div>
+						<h1>Jedis Page!!!</h1>
+						<ul>{jedis}</ul>
+					</div> 			
 				}
 			</div>
 		)
