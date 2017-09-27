@@ -1,3 +1,6 @@
+.navbar a{
+    font-size: 16px !important;
+}
 .rememberme{
     font-weight: 100;
     color: #666;
@@ -37,7 +40,7 @@
 }
 a.active {
     color: #555 !important;
-    background-color: #e7e7e7 !important;
+    background-color: #f7f7f7 !important;
 }
 .form-signin {
     max-width: 330px;
