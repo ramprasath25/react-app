@@ -15,3 +15,13 @@ export function getUserDetails() {
 		return false;
 	}	
 }
+
+export function logout() {
+	const getAccessToken = JSON.parse(localStorage.getItem('ACCESS_TOKEN_KEY'));	
+	if(getAccessToken !== null && getAccessToken.access_token !== '' && getAccessToken.access_token !== null) {
+		localStorage.clear();
+		return true;
+	} else {		
+		return false;
+	}	
+}

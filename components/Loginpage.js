@@ -99,7 +99,6 @@ class Loginpage extends Component {
 							<p className="text-center">OR</p>
 			                <div className="text-center">
 			                	<img src={require('../src/SignIn.png')} onClick={this.handleClick.bind(this)}/>
-			                	<button onClick={this.logOut.bind(this)}>Logout </button>
 			                </div>
 			            </div>
 			        </div>
