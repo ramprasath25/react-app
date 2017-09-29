@@ -1,15 +1,17 @@
 import React from 'react';
 import {Link} from 'react-router';
-import Navlinks from './Navlinks';
 import {isLoggedIn, getUserDetails} from './authorization';
 import * as ReactBootstrap from 'react-bootstrap';
-import {LinkContainer } from 'react-router-bootstrap';
 class Header extends React.Component {     
+
+
+
 	render() {
         const islogin = isLoggedIn();
+        console.log(this.props.route.userDetails);
 		return(
 			<div>				
-				<ReactBootstrap.Navbar collapse>
+				<ReactBootstrap.Navbar>
                     <ReactBootstrap.Navbar.Header>
                       <ReactBootstrap.Navbar.Brand>
                         <small>React-App</small>
@@ -36,9 +38,12 @@ class Header extends React.Component {
                             </ReactBootstrap.Nav>
                         )}
                 </ReactBootstrap.Navbar>
-				<div className="container">
+				<div>
 				{this.props.children}
 				</div>
+                <div className="footer">
+                    <div className="container"><b>copyright &copy; 2017</b></div>
+                </div>
 			</div>
 		)
 	}

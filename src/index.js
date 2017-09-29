@@ -8,7 +8,6 @@ import Homepage from '../components/Homepage';
 import Aboutpage from '../components/Aboutpage';
 import Loginpage from '../components/Loginpage';
 import Notfoundpage from '../components/Notfoundpage';
-import userPage from '../components/userPage';
 
 import './styles.css';
 //Importing Store from config file
@@ -18,10 +17,9 @@ class App extends React.Component {
 	render() {
 		return(
 			<Router history={browserHistory}>
-				<Route path='/' component={Header}>
+				<Route path='/' component={Header} userDetails={true}>
 					<IndexRoute component={Homepage}/>
 					<Route path='/about' component={Aboutpage} />
-                    <Route path='/users' component={userPage}/>
 					<Route path='/login' component={Loginpage}/>
 					<Route path='*' component={Notfoundpage}/>
 				</Route>				
@@ -30,4 +28,4 @@ class App extends React.Component {
 	}
 }
 // Rendering Element
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('app'));
+ReactDOM.render(<Provider store={store} ><App /></Provider>, document.getElementById('app'));

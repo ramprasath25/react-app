@@ -1,5 +1,36 @@
-.navbar a{
-    font-size: 16px !important;
+html,body {
+    height:100% !important;
+}
+.loginPage {
+    position: absolute;
+    background: #4AA2D9;
+    width: 100%;
+    height: 100%;
+    top:0;
+    bottom: 0;
+    min-height: 100%;
+    z-index: -99;
+}
+.login-linkedin {
+    font-size: 26px;
+    font-weight: 700;
+    margin:0 5px 0 10px;
+    text-transform: initial;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 15px;
+    padding:15px 0;
+    vertical-align: middle;
+    background-color: #fff;
+    -webkit-box-shadow: 0px -2px 2px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px -2px 2px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px -2px 2px 0px rgba(0,0,0,0.3);
+}
+.navbar li a{
+    font-size: 18px !important;
 }
 .rememberme{
     font-weight: 100;
@@ -9,100 +40,12 @@
 .rememberme input {
     margin-right: 5px;
 }
-.fa {
-    padding: 20px;
-    font-size: 30px;
-    width: 65px;
+.fa {    
+    font-size: 30px;    
     text-align: center;
     text-decoration: none;
     border-radius: 50%;
-    margin-left: 20px;
 }
-.fa:hover {
-    opacity: 0.7;
-    cursor: pointer;
-}
-.fa-facebook {
-    background: #3B5998;
-    color: white;
-}
-.fa-twitter {
-    background: #55ACEE;
-    color: white;
-}
-.fa-google {
-    background: #dd4b39;
-    color: white;
-}
-.fa-linkedin {
-    background: #007bb5;
-    color: white;
-}
-a.active {
-    color: #555 !important;
-    background-color: #f7f7f7 !important;
-}
-.form-signin {
-    max-width: 330px;
-    padding: 15px;
-    margin: 0 auto;
-}
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-    margin-bottom: 10px;
-}
-.form-signin .checkbox {
-    font-weight: normal;
-}
-.form-signin .form-control {
-    position: relative;
-    font-size: 16px;
-    height: auto;
-    padding: 10px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-.form-signin .form-control:focus {
-    z-index: 2;
-}
-.form-signin input[type="text"] {
-    margin-bottom: -1px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-.form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
-.account-wall {
-    margin-top: 20px;
-    padding: 40px 0px 20px 0px;
-    background-color: #f7f7f7;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-}
-.login-title {
-    color: #555;
-    font-size: 18px;
-    font-weight: 400;
-    display: block;
-}
-.profile-img {
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 10px;
-    display: block;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-}
-.need-help {
-    margin-top: 10px;
-}
-.new-account {
-    display: block;
-    margin-top: 10px;
+.fa-linkedin-square {
+    color: #007bb5;
 }
