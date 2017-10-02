@@ -1,20 +1,22 @@
 import React from 'react';
 import {Link} from 'react-router';
+import {connect} from 'react-redux';
 import {isLoggedIn, getUserDetails} from './authorization';
+import * as action from '../actions/login-action';
 import * as ReactBootstrap from 'react-bootstrap';
-class Header extends React.Component {     
-
-
-
+class Header extends React.Component {
+    handleClick() {
+        this.props.loginStatus()
+    }
 	render() {
         const islogin = isLoggedIn();
-        console.log(this.props.route.userDetails);
+        console.log(this.props.loginDetails)
 		return(
 			<div>				
 				<ReactBootstrap.Navbar>
                     <ReactBootstrap.Navbar.Header>
                       <ReactBootstrap.Navbar.Brand>
-                        <small>React-App</small>
+                        <small onClick={this.handleClick.bind(this)}>React-App</small>
                       </ReactBootstrap.Navbar.Brand>
                     </ReactBootstrap.Navbar.Header>
                     <ReactBootstrap.Nav>
@@ -48,5 +50,15 @@ class Header extends React.Component {
 		)
 	}
 }
-
-module.exports = Header;
+const mapStateToProps = (state) => {
+    return {
+        loginDetails: state.loginDetails
+    }
+}
+const mapDispatchToProps = (dispatch)=> {
+    return {
+        loginStatus: () => dispatch(action.isLoggedIn())
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
+// module.exports = Header;

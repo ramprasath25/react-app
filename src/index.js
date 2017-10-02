@@ -17,9 +17,9 @@ class App extends React.Component {
 	render() {
 		return(
 			<Router history={browserHistory}>
-				<Route path='/' component={Header} userDetails={true}>
-					<IndexRoute component={Homepage}/>
-					<Route path='/about' component={Aboutpage} />
+				<Route path='/' component={Header}>
+					<IndexRoute component={Homepage} />
+					<Route path="/about" component={Aboutpage}/>
 					<Route path='/login' component={Loginpage}/>
 					<Route path='*' component={Notfoundpage}/>
 				</Route>				

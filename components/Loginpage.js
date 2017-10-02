@@ -71,6 +71,9 @@ class Loginpage extends Component {
 			}			
 		});
 	}
+	test() {
+		alert();
+	}
 	render() {		
 		return (
 			<div className="loginPage">
@@ -81,7 +84,7 @@ class Loginpage extends Component {
 						</div>
 						<div className="col-md-6"><br/><br/><br/><br/><br/><br/>
 							<h2 className="text-center">Find your Co-worker</h2><br/><br/>							
-							<Button bsSize="large" block>
+							<Button bsSize="large" block onClick={this.test}>
 								<h5>Get Started with 
 									<span className="login-linkedin">Linked</span>
 									<i className="fa fa-linkedin-square"></i>
