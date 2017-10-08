@@ -1,15 +1,11 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router';
+import {connect} from 'react-redux';
 import axios from 'axios';
-import querystring from 'querystring';
 import {Button, Glyphicon} from 'react-bootstrap';
+import * as action from '../actions/login-action';
+
 class Loginpage extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			loginDetails : ''
-		}
-	}	
 	handleClick(){
 		window.IN.init({
 			api_key : '81yrfrfgcu5cku',
@@ -24,12 +20,17 @@ class Loginpage extends Component {
             window.IN.API.Profile("me")
                 .fields(["id", "firstName", "lastName", "pictureUrl", "publicProfileUrl", "email-address"])
                 .result((result) => {
-                    alert("Successfull login from linkedin : "+ result.values[0].firstName + " " + result.values[0].lastName);
-                   
-                    this.setState({
-                    	loginDetails : result.values[0]
-                    });
-                    this.getAuthorization();
+                    alert("Successfull login from linkedin : "+ result.values[0].firstName + " " + result.values[0].lastName);                   
+                   	const loginResult = {
+                   		"id" : result.values[0].id,
+                   		"firstName":result.values[0].firstName,
+                   		"lastName":result.values[0].lastName,
+                   		"pictureUrl":result.values[0].pictureUrl,
+                   		"publicProfileUrl":result.values[0].publicProfileUrl,
+                   		"emailAddress":result.values[0].emailAddress
+                   	}
+                   	// Calling action
+                   	this.props.userLogin(loginResult);
                 })
                 .error(function(err) {
                     console.log('Import error - Error occured while importing data')
@@ -71,10 +72,7 @@ class Loginpage extends Component {
 			}			
 		});
 	}
-	test() {
-		alert();
-	}
-	render() {		
+	render() {	
 		return (
 			<div className="loginPage">
 				<div className="container">
@@ -84,7 +82,7 @@ class Loginpage extends Component {
 						</div>
 						<div className="col-md-6"><br/><br/><br/><br/><br/><br/>
 							<h2 className="text-center">Find your Co-worker</h2><br/><br/>							
-							<Button bsSize="large" block onClick={this.test}>
+							<Button bsSize="large" block onClick={this.handleClick.bind(this)}>
 								<h5>Get Started with 
 									<span className="login-linkedin">Linked</span>
 									<i className="fa fa-linkedin-square"></i>
@@ -97,4 +95,14 @@ class Loginpage extends Component {
 		)
 	}
 }
-export default Loginpage;
+const mapStateToProps = (state) =>{
+	return {
+		loginStatus : state.loginDetails
+	}
+}
+const mapDispatchToProps = (dispatch) => {
+	return{
+		userLogin : (values) => dispatch(action.loginSuccess(values))
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Loginpage);

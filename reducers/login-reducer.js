@@ -6,13 +6,18 @@ const defaultState = {
 export default(state = defaultState, action) => {
 	switch (action.type) {
 		case "loginSuccess":
-			let newState = {
-				"loginDetails" : "Success"
+			const newState = {
+				"loginDetails" : action.payload
 			}
+			localStorage.setItem('loginDetails', JSON.stringify(newState));
 		 	return newState;
 			break;
 		default:
-			return state;
+			const storedState = JSON.parse(localStorage.getItem('loginDetails'));
+			if(storedState !== '') {
+				return storedState;
+			} else {
+				return state;
+			}			
 	}
-	return state;
 }

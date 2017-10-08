@@ -1,6 +1,6 @@
-export function isLoggedIn() {
+export function loginSuccess(values) {
 	return {
 		type: "loginSuccess",
-		payload: null
+		payload: values
 	}
 }

@@ -4,41 +4,41 @@ import {connect} from 'react-redux';
 import {isLoggedIn, getUserDetails} from './authorization';
 import * as action from '../actions/login-action';
 import * as ReactBootstrap from 'react-bootstrap';
-class Header extends React.Component {
-    handleClick() {
-        this.props.loginStatus()
-    }
+class Header extends React.Component {    
 	render() {
-        const islogin = isLoggedIn();
-        console.log(this.props.loginDetails)
+        const islogin = ((this.props.loginStatus.loginDetails !== '') ? true : false);        
+        const p_img = this.props.loginStatus.loginDetails.pictureUrl;
+        const p_name = this.props.loginStatus.loginDetails.firstName +" "+this.props.loginStatus.loginDetails.lastName;
 		return(
 			<div>				
 				<ReactBootstrap.Navbar>
                     <ReactBootstrap.Navbar.Header>
                       <ReactBootstrap.Navbar.Brand>
-                        <small onClick={this.handleClick.bind(this)}>React-App</small>
+                        <small>React-App</small>
                       </ReactBootstrap.Navbar.Brand>
                     </ReactBootstrap.Navbar.Header>
                     <ReactBootstrap.Nav>
                       <ReactBootstrap.NavItem eventKey={1} href="/">Home</ReactBootstrap.NavItem>
                       <ReactBootstrap.NavItem eventKey={2} href="/about">About us</ReactBootstrap.NavItem>
+                      { (islogin) ? 
+                        <ReactBootstrap.NavItem eventKey={3} href="/dashboard">Dashboard</ReactBootstrap.NavItem> : ''}
                     </ReactBootstrap.Nav>                    
-                        {((islogin !== true) ?
-                            <ReactBootstrap.Nav pullRight> 
-                                <ReactBootstrap.NavItem eventKey={1} href="/login">Sign In</ReactBootstrap.NavItem>
-                            </ReactBootstrap.Nav>
-                                :
-                            <ReactBootstrap.Nav pullRight>
+                        { (islogin) ?
+                            <ReactBootstrap.Nav pullRight>                                
                                 <ReactBootstrap.Navbar.Brand>
-                                    <ReactBootstrap.Image src="https://facebook.github.io/react/img/logo.svg" circle/>
-                                </ReactBootstrap.Navbar.Brand>                        
-                                <ReactBootstrap.NavDropdown eventKey={3} title="Hi Ramprasath" id="basic-nav-dropdown">
-                                    <ReactBootstrap.MenuItem eventKey={3.1}>Account</ReactBootstrap.MenuItem>
+                                <ReactBootstrap.Image className="headerProfileImage" src={p_img} circle />        
+                                </ReactBootstrap.Navbar.Brand>
+                                <ReactBootstrap.NavDropdown eventKey={5} title={"Hi "+p_name} id="basic-nav-dropdown">
+                                    <ReactBootstrap.MenuItem eventKey={5.1}>Account</ReactBootstrap.MenuItem>
                                     <ReactBootstrap.MenuItem divider />
-                                    <ReactBootstrap.MenuItem eventKey={3.4}>Logout</ReactBootstrap.MenuItem>
+                                    <ReactBootstrap.MenuItem eventKey={5.4}>Logout</ReactBootstrap.MenuItem>
                                 </ReactBootstrap.NavDropdown>
                             </ReactBootstrap.Nav>
-                        )}
+                            :
+                            <ReactBootstrap.Nav pullRight> 
+                                <ReactBootstrap.NavItem eventKey={4} href="/login">Sign In</ReactBootstrap.NavItem>
+                            </ReactBootstrap.Nav>
+                        }
                 </ReactBootstrap.Navbar>
 				<div>
 				{this.props.children}
@@ -52,12 +52,12 @@ class Header extends React.Component {
 }
 const mapStateToProps = (state) => {
     return {
-        loginDetails: state.loginDetails
+        loginStatus: state.loginDetails
     }
 }
 const mapDispatchToProps = (dispatch)=> {
     return {
-        loginStatus: () => dispatch(action.isLoggedIn())
+        
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
