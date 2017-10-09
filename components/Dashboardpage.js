@@ -6,12 +6,10 @@ class Dashboard extends React.Component {
 	}		
 	render(){		
 		return(
-			<div>
-				{						 
-					<div>
-						<h1>Dashboard</h1>						
-					</div> 			
-				}
+			<div className="container">						 
+				<div>
+					<h1>Dashboard</h1>						
+				</div> 
 			</div>
 		)
 	}

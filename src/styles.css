@@ -29,6 +29,9 @@
 .navbar li a{
     font-size: 18px !important;
 }
+.navbar open {
+    background: #fff !important;
+}
 .rememberme{
     font-weight: 100;
     color: #666;
@@ -47,9 +50,10 @@
     color: #007bb5;
 }
 .headerProfileImage {
-    height: 50px;
+    height: 50px !important;
     margin-top: 5px;
-    padding: 0px;
+    margin-right: 5px;
+    padding: 0px !important;
      -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.6);
     -moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.6);
     box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.6);

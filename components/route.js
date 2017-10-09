@@ -14,15 +14,22 @@ class App extends React.Component {
 		const requireAuth = function(nextState, replace) {
 			const islogin = ((this.props.loginStatus.loginDetails !== '') ? true : false);
 			if(!islogin) {
-				replace('/login')
+				replace('/login');
 			}
 		}
+		const signIn = function(nextState, replace) {
+			const islogin = ((this.props.loginStatus.loginDetails !== '') ? true : false);
+			if(islogin) {
+				replace('/dashboard');
+			}
+		}
+		// onEnter={signIn.bind(this)}
 		return(
 			<Router history={browserHistory}>
 				<Route path='/' component={Header}>
 					<IndexRoute component={Homepage} />
 					<Route path="/about" component={Aboutpage}/>
-					<Route path='/login' component={Loginpage}/>
+					<Route path='/login' component={Loginpage} />
 					<Route path='/dashboard' component={Dashboard} onEnter={requireAuth.bind(this)}/>
 					<Route path='*' component={Notfoundpage}/>
 				</Route>				

@@ -4,7 +4,17 @@ import {connect} from 'react-redux';
 import {isLoggedIn, getUserDetails} from './authorization';
 import * as action from '../actions/login-action';
 import * as ReactBootstrap from 'react-bootstrap';
-class Header extends React.Component {    
+
+class Header extends React.Component {
+    logout() {
+        // this.props.logout();
+        window.IN.User.logout(function(data) {
+             if(data == true) {
+                 localStorage.clear();
+                 alert("success");
+             }           
+            });
+    }
 	render() {
         const islogin = ((this.props.loginStatus.loginDetails !== '') ? true : false);        
         const p_img = this.props.loginStatus.loginDetails.pictureUrl;
@@ -31,7 +41,7 @@ class Header extends React.Component {
                                 <ReactBootstrap.NavDropdown eventKey={5} title={"Hi "+p_name} id="basic-nav-dropdown">
                                     <ReactBootstrap.MenuItem eventKey={5.1}>Account</ReactBootstrap.MenuItem>
                                     <ReactBootstrap.MenuItem divider />
-                                    <ReactBootstrap.MenuItem eventKey={5.4}>Logout</ReactBootstrap.MenuItem>
+                                    <ReactBootstrap.MenuItem eventKey={5.4} onClick={this.logout.bind(this)}>Logout</ReactBootstrap.MenuItem>
                                 </ReactBootstrap.NavDropdown>
                             </ReactBootstrap.Nav>
                             :
@@ -57,8 +67,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch)=> {
     return {
-        
+        logout : () => dispatch(action.logoutUser())
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
-// module.exports = Header;

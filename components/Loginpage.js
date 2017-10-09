@@ -66,11 +66,7 @@ class Loginpage extends Component {
 		return getAccessToken.access_token
 	}
 	logOut() {
-		window.IN.User.logout(function(data) {
-			if(data == true) {
-				localStorage.clear();	
-			}			
-		});
+		
 	}
 	render() {	
 		return (

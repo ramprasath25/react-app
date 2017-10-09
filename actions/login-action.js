@@ -4,3 +4,9 @@ export function loginSuccess(values) {
 		payload: values
 	}
 }
+
+export function logoutUser() {
+	return {
+		type: "logout"
+	}
+}

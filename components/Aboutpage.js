@@ -4,14 +4,10 @@ class Aboutpage extends React.Component {
 		super();		
 	}		
 	render(){		
-		return(
-			<div>
-				{						 
-					<div>
-						<h1>About Page!!!</h1>						
-					</div> 			
-				}
-			</div>
+		return(				 
+				<div className="container">
+					<h1>About Page!!!</h1>						
+				</div> 
 		)
 	}
 }
