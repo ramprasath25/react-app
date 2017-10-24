@@ -29,14 +29,14 @@ yarn install
 yarn start
 ```
 
-Visit [http://localhost:8080/](http://localhost:8080/).
+Visit [http://localhost:8080/](http://localhost:8080/)
 
 > **Note:**
 > - To change the port change <i class="icon-file"></i> **package.json** file
 
 > **Tip:** **npm** can also be used instead of yarn.  **package.json** file has to be modified to npm
 
-## License
+## License for
 
 MIT@Ramprasath R.
 
