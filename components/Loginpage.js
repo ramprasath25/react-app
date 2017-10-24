@@ -2,32 +2,29 @@ import React,{Component} from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import axios from 'axios';
-import {Button, Glyphicon} from 'react-bootstrap';
+import {Button, Glyphicon, ProgressBar} from 'react-bootstrap';
 import * as action from '../actions/login-action';
 
 class Loginpage extends Component {
 	handleClick(){
-		window.IN.init({
-			api_key : '81yrfrfgcu5cku',
-			authorize: true
-		});
-		setTimeout(function(){
-			this.getUserDetails()
-		}.bind(this), 1000);
+		this.getUserDetails();
 	}
 	getUserDetails() {
 		window.IN.User.authorize(() => { 
             window.IN.API.Profile("me")
-                .fields(["id", "firstName", "lastName", "pictureUrl", "publicProfileUrl", "email-address"])
+                .fields(["id", "firstName", "lastName", "pictureUrl", "publicProfileUrl", "email-address", "location:(name)"])
                 .result((result) => {
+
                     alert("Successfull login from linkedin : "+ result.values[0].firstName + " " + result.values[0].lastName);                   
+                   	console.log(result.values[0])
                    	const loginResult = {
                    		"id" : result.values[0].id,
                    		"firstName":result.values[0].firstName,
                    		"lastName":result.values[0].lastName,
                    		"pictureUrl":result.values[0].pictureUrl,
                    		"publicProfileUrl":result.values[0].publicProfileUrl,
-                   		"emailAddress":result.values[0].emailAddress
+                   		"emailAddress":result.values[0].emailAddress,
+                   		"location" : result.values[0].location.name
                    	}
                    	// Calling action
                    	this.props.userLogin(loginResult);
@@ -65,12 +62,13 @@ class Loginpage extends Component {
 		const getAccessToken = JSON.parse(localStorage.getItem('ACCESS_TOKEN_KEY'));
 		return getAccessToken.access_token
 	}
-	logOut() {
-		
-	}
-	render() {	
+	render() {
+		const progressInstance = (
+								  <ProgressBar active now={45} />
+								);
 		return (
 			<div className="loginPage">
+				<div>{progressInstance}</div>
 				<div className="container">
 					<div className="row">
 						<div className="col-md-6">

@@ -1,3 +1,6 @@
+body{
+    background: #edf2f6 !important;
+}
 .loginPage {
     position: absolute;
     background: #4AA2D9;

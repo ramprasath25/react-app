@@ -9,7 +9,13 @@ import Loginpage from '../components/Loginpage';
 import Notfoundpage from '../components/Notfoundpage';
 import Dashboard from '../components/Dashboardpage'
 
-class App extends React.Component {	
+class App extends React.Component {
+	componentDidMount() {
+		window.IN.init({
+			api_key : '81yrfrfgcu5cku',
+			authorize: true
+		});
+	}
 	render() {
 		const requireAuth = function(nextState, replace) {
 			const islogin = ((this.props.loginStatus.loginDetails !== '') ? true : false);
@@ -17,20 +23,20 @@ class App extends React.Component {
 				replace('/login');
 			}
 		}
-		const signIn = function(nextState, replace) {
+		const signIn = function(nextState, replace) {			
 			const islogin = ((this.props.loginStatus.loginDetails !== '') ? true : false);
 			if(islogin) {
 				replace('/dashboard');
 			}
 		}
-		// onEnter={signIn.bind(this)}
 		return(
 			<Router history={browserHistory}>
 				<Route path='/' component={Header}>
-					<IndexRoute component={Homepage} />
+					<IndexRoute component={Homepage}/>
 					<Route path="/about" component={Aboutpage}/>
-					<Route path='/login' component={Loginpage} />
+					<Route path='/login' component={Loginpage} onEnter={signIn.bind(this)}/>
 					<Route path='/dashboard' component={Dashboard} onEnter={requireAuth.bind(this)}/>
+					<Route path='/dashboard/about' component={Dashboard} onEnter={requireAuth.bind(this)}/>
 					<Route path='*' component={Notfoundpage}/>
 				</Route>				
 			</Router>

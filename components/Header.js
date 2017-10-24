@@ -7,13 +7,7 @@ import * as ReactBootstrap from 'react-bootstrap';
 
 class Header extends React.Component {
     logout() {
-        // this.props.logout();
-        window.IN.User.logout(function(data) {
-             if(data == true) {
-                 localStorage.clear();
-                 alert("success");
-             }           
-            });
+        this.props.logout();
     }
 	render() {
         const islogin = ((this.props.loginStatus.loginDetails !== '') ? true : false);        

@@ -4,6 +4,7 @@ import {Provider} from 'react-redux';
 import App from '../components/route';
 import './styles.css';
 import './bootstrap.css';
+import './theme.css';
 //Importing Store from config file
 import store from './store.js';
 

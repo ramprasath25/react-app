@@ -1,3 +1,5 @@
+import { push } from 'react-router-redux';
+
 // Default State
 const defaultState = {
 	"loginDetails" : ""
@@ -10,15 +12,13 @@ export default(state = defaultState, action) => {
 				"loginDetails" : action.payload
 			}
 			localStorage.setItem('loginDetails', JSON.stringify(newState));
+			window.location = '/dashboard';
 		 	return newState;
 			break;
 		case "logout":
-			window.IN.User.logout(function(data) {
-				if(data == true) {
-					localStorage.clear();
-					return defaultState;
-				}			
-			});
+			window.IN.User.logout()
+			localStorage.clear();
+			return defaultState;
 			break;
 		default:
 			const storedState = JSON.parse(localStorage.getItem('loginDetails'));
