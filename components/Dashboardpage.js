@@ -1,5 +1,8 @@
 import React,{Component} from 'react';
+import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import {connect} from 'react-redux';
+import Notfoundpage from '../components/Notfoundpage';
+import Aboutpage from '../components/Aboutpage';
 
 class Dashboard extends React.Component {
 	constructor () {
@@ -55,6 +58,12 @@ class Dashboard extends React.Component {
 										<div className="country">{p_location}</div>
 									</div>
 								</div>
+							</div>
+							<div>
+							<Router history={browserHistory}>
+								<Route path='dashboard/asd' component={Aboutpage}/>
+								<Route path="dashboard/*" component={Notfoundpage}/>
+							</Router>
 							</div>
 						</div>
 				</div>

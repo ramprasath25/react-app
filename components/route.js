@@ -35,8 +35,7 @@ class App extends React.Component {
 					<IndexRoute component={Homepage}/>
 					<Route path="/about" component={Aboutpage}/>
 					<Route path='/login' component={Loginpage} onEnter={signIn.bind(this)}/>
-					<Route path='/dashboard' component={Dashboard} onEnter={requireAuth.bind(this)}/>
-					<Route path='/dashboard/about' component={Dashboard} onEnter={requireAuth.bind(this)}/>
+					<Route path="/dashboard/*" component={Dashboard} onEnter={requireAuth.bind(this)}/>
 					<Route path='*' component={Notfoundpage}/>
 				</Route>				
 			</Router>
