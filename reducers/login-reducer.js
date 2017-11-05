@@ -12,7 +12,7 @@ export default(state = defaultState, action) => {
 				"loginDetails" : action.payload
 			}
 			localStorage.setItem('loginDetails', JSON.stringify(newState));
-			window.location = '/dashboard';
+			window.location = '/dashboard/timeline';
 		 	return newState;
 			break;
 		case "logout":

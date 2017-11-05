@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {Router, Route, IndexRoute, browserHistory, Redirect} from 'react-router';
 import {connect} from 'react-redux';
 
-class Dashboard extends React.Component {
+class DashFriends extends React.Component {
 	constructor () {
 		super();		
 	}		
@@ -17,20 +17,20 @@ class Dashboard extends React.Component {
 					<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">						
 							<div className="top-header">
 								<div className="top-header-thumb">
-									<img src={require('../src/header.jpg')}/>
+									<img src={require('../../src/header.jpg')}/>
 								</div>
 								<div className="profile-section">
 									<div className="row">
 										<div className="col-lg-5 col-md-5 ">
 											<ul className="profile-menu">
 												<li>
-													<a className="active">Timeline</a>
+													<a>Timeline</a>
 												</li>
 												<li>
 													<a>About</a>
 												</li>
 												<li>
-													<a>Friends</a>
+													<a className="active">Friends</a>
 												</li>
 											</ul>
 										</div>
@@ -77,4 +77,4 @@ const mapDispatchToProps = (dispatch) => {
 		
 	}
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(DashFriends);

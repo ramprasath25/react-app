@@ -7,7 +7,9 @@ import Homepage from '../components/Homepage';
 import Aboutpage from '../components/Aboutpage';
 import Loginpage from '../components/Loginpage';
 import Notfoundpage from '../components/Notfoundpage';
-import Dashboard from '../components/Dashboardpage'
+import DashTimeLine from '../components/dashboard/DashTimeLine';
+import DashAbout from '../components/dashboard/DashAbout';
+import DashFriends from '../components/dashboard/DashFriends';
 
 class App extends React.Component {
 	componentDidMount() {
@@ -17,16 +19,16 @@ class App extends React.Component {
 		});
 	}
 	render() {
-		const requireAuth = function(nextState, replace) {
+		const requireAuth = (nextState, replace)=> {
 			const islogin = ((this.props.loginStatus.loginDetails !== '') ? true : false);
 			if(!islogin) {
 				replace('/login');
 			}
 		}
-		const signIn = function(nextState, replace) {			
+		const signIn = (nextState, replace)=> {			
 			const islogin = ((this.props.loginStatus.loginDetails !== '') ? true : false);
 			if(islogin) {
-				replace('/dashboard');
+				replace('/dashboard/timeline');
 			}
 		}
 		return(
@@ -35,7 +37,9 @@ class App extends React.Component {
 					<IndexRoute component={Homepage}/>
 					<Route path="/about" component={Aboutpage}/>
 					<Route path='/login' component={Loginpage} onEnter={signIn.bind(this)}/>
-					<Route path="/dashboard/*" component={Dashboard} onEnter={requireAuth.bind(this)}/>
+					<Route path="dashboard/timeline" component={DashTimeLine} onEnter={requireAuth.bind(this)}/>
+					<Route path="dashboard/about" component={DashAbout} onEnter={requireAuth.bind(this)}/>
+					<Route path="dashboard/friends" component={DashFriends} onEnter={requireAuth.bind(this)}/>
 					<Route path='*' component={Notfoundpage}/>
 				</Route>				
 			</Router>

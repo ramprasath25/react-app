@@ -46,14 +46,13 @@ class Header extends React.Component {
                 </ReactBootstrap.Navbar>
 				<div>
 				{this.props.children}
-				</div>
-                <div className="footer">
-                    <div className="container"><b>copyright &copy; 2017</b></div>
-                </div>
+				</div>                
 			</div>
 		)
+        
 	}
 }
+
 const mapStateToProps = (state) => {
     return {
         loginStatus: state.loginDetails
