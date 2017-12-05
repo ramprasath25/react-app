@@ -10,6 +10,8 @@ import Notfoundpage from '../components/Notfoundpage';
 import DashTimeLine from '../components/dashboard/DashTimeLine';
 import DashAbout from '../components/dashboard/DashAbout';
 import DashFriends from '../components/dashboard/DashFriends';
+import DashAccount from '../components/dashboard/DashAccount';
+import store from '../src/store.js';
 
 class App extends React.Component {
 	componentDidMount() {
@@ -17,7 +19,7 @@ class App extends React.Component {
 			api_key : '81yrfrfgcu5cku',
 			authorize: true
 		});
-	}
+	}	
 	render() {
 		const requireAuth = (nextState, replace)=> {
 			const islogin = ((this.props.loginStatus.loginDetails !== '') ? true : false);
@@ -29,8 +31,8 @@ class App extends React.Component {
 			const islogin = ((this.props.loginStatus.loginDetails !== '') ? true : false);
 			if(islogin) {
 				replace('/dashboard/timeline');
-			}
-		}
+			} 
+		}		
 		return(
 			<Router history={browserHistory}>
 				<Route path='/' component={Header}>
@@ -40,6 +42,7 @@ class App extends React.Component {
 					<Route path="dashboard/timeline" component={DashTimeLine} onEnter={requireAuth.bind(this)}/>
 					<Route path="dashboard/about" component={DashAbout} onEnter={requireAuth.bind(this)}/>
 					<Route path="dashboard/friends" component={DashFriends} onEnter={requireAuth.bind(this)}/>
+					<Route path="dashboard/account" component={DashAccount} onEnter={requireAuth.bind(this)} />
 					<Route path='*' component={Notfoundpage}/>
 				</Route>				
 			</Router>

@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Router, Route, IndexRoute, browserHistory, Redirect} from 'react-router';
+import { Router, Route, IndexRoute, browserHistory, Redirect, Link} from 'react-router';
 import {connect} from 'react-redux';
 
 class DashAbout extends React.Component {
@@ -14,53 +14,53 @@ class DashAbout extends React.Component {
 		return(
 			<div className="container">	
 				<div className="row">
-					<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">						
-							<div className="top-header">
-								<div className="top-header-thumb">
-									<img src={require('../../src/header.jpg')}/>
-								</div>
-								<div className="profile-section">
-									<div className="row">
-										<div className="col-lg-5 col-md-5 ">
-											<ul className="profile-menu">
-												<li>
-													<a>Timeline</a>
-												</li>
-												<li>
-													<a className="active">About</a>
-												</li>
-												<li>
-													<a>Friends</a>
-												</li>
-											</ul>
-										</div>
-										<div className="col-lg-2"></div>
-										<div className="col-lg-5 offset-lg-2 col-md-5 offset-md-2">
-											<ul className="profile-menu">
-												<li>
-													<a>Photos</a>
-												</li>
-												<li>
-													<a>Videos</a>
-												</li>
-												<li>
-													<a>Videos</a>
-												</li>
-											</ul>
-										</div>
+					<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div className="top-header">
+							<div className="top-header-thumb">
+								<img src={require('../../src/header.jpg')} />
+							</div>
+							<div className="profile-section">
+								<div className="row">
+									<div className="col-lg-5 col-md-5 ">
+										<ul className="profile-menu">
+											<li>
+												<Link to="/dashboard/timeline">Timeline</Link>
+											</li>
+											<li>
+												<Link to="/dashboard/about" className="active">About</Link>
+											</li>
+											<li>
+												<Link to="/dashboard/friends">Friends</Link>
+											</li>
+										</ul>
 									</div>
-								</div>
-								<div className="top-header-author">
-										<img src={this.props.loginStatus.loginDetails.pictureUrl} className="img-circle img-thumbnail"/>
-									<div className="author-content">
-										<a className="h4 author-name">{p_name}</a>
-										<div className="country">{p_location}</div>
+									<div className="col-lg-2"></div>
+									<div className="col-lg-5 offset-lg-2 col-md-5 offset-md-2">
+										<ul className="profile-menu">
+											<li>
+												<Link to="/dashboard/account">Account</Link>
+											</li>
+											<li>
+												<Link>Blogs</Link>
+											</li>
+											<li>
+												<Link>Videos</Link>
+											</li>
+										</ul>
 									</div>
 								</div>
 							</div>
-							<div>
+							<div className="top-header-author">
+								<img src={this.props.loginStatus.loginDetails.pictureUrl} className="img-circle img-thumbnail" />
+								<div className="author-content">
+									<span className="h4 author-name">{p_name}</span>
+									<div className="country">{p_location}</div>
+								</div>
 							</div>
 						</div>
+						<div>
+						</div>
+					</div>
 				</div>
 				<div className="row">
 					<div className="col-xl-8 order-xl-2 col-lg-8 order-lg-2 col-md-12 order-md-1 col-sm-12 col-xs-12">

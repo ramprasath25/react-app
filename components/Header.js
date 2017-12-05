@@ -25,7 +25,7 @@ class Header extends React.Component {
                       <ReactBootstrap.NavItem eventKey={1} href="/">Home</ReactBootstrap.NavItem>
                       <ReactBootstrap.NavItem eventKey={2} href="/about">About us</ReactBootstrap.NavItem>
                       { (islogin) ? 
-                        <ReactBootstrap.NavItem eventKey={3} href="/dashboard">Dashboard</ReactBootstrap.NavItem> : ''}
+                        <ReactBootstrap.NavItem eventKey={3} href="/dashboard/timeline">Dashboard</ReactBootstrap.NavItem> : ''}
                     </ReactBootstrap.Nav>                    
                         { (islogin) ?
                             <ReactBootstrap.Nav pullRight>                                
@@ -33,7 +33,7 @@ class Header extends React.Component {
                                 <ReactBootstrap.Image className="headerProfileImage" src={p_img} circle />        
                                 </ReactBootstrap.Navbar.Brand>
                                 <ReactBootstrap.NavDropdown eventKey={5} title={"Hi "+p_name} id="basic-nav-dropdown">
-                                    <ReactBootstrap.MenuItem eventKey={5.1}>Account</ReactBootstrap.MenuItem>
+                                <ReactBootstrap.MenuItem eventKey={5.1} href="/dashboard/account">Account</ReactBootstrap.MenuItem>
                                     <ReactBootstrap.MenuItem divider />
                                     <ReactBootstrap.MenuItem eventKey={5.4} onClick={this.logout.bind(this)}>Logout</ReactBootstrap.MenuItem>
                                 </ReactBootstrap.NavDropdown>
